@@ -11,17 +11,21 @@ var port = 8800;
 //call express function
 var app = express();
 //connect MongoDb
-mongoDB.connect(Db, { useNewUrlParser: true });
+mongoDB.connect(Db, { useNewUrlParser: true, useUnifiedTopology: true });
 //middleware connection
 //import router module
 var abc = require("./router/tests");
 
+//middle server start
+//call the middleware bodyparser json()
+app.use(bodyParser.json());
 //call the middle ware bodyparser json() urlencoded
 app.use(
   bodyParser.urlencoded({
     extended: true
   })
 );
+//End middleware server
 //cross origin start
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "*");
