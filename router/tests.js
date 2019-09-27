@@ -51,6 +51,20 @@ app.get("/:id", function(req, res) {
     });
 });
 //End get opration
-
+//Start Delete operation
+app.delete("/:id", function(req, res) {
+  test
+    .findOneAndDelete({
+      _id: req.params.id
+    })
+    .exec(function(err, test) {
+      if (err) {
+        res.send("Error is occure");
+      } else {
+        res.json(test);
+      }
+    });
+});
+//End Delete Opration
 //export the router
 module.exports = app;
