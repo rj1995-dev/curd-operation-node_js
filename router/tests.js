@@ -35,6 +35,22 @@ app.post("/", function(req, res) {
 
 //End post opration
 
-//
+//Get opration (finding data id wise)
+app.get("/:id", function(req, res) {
+  test
+    .findOne({
+      //_id means database id and ':/id' means route id
+      _id: req.params.id
+    })
+    .exec(function(err, test) {
+      if (err) {
+        res.send("Id did not match!");
+      } else {
+        res.json(test);
+      }
+    });
+});
+//End get opration
+
 //export the router
 module.exports = app;
