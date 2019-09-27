@@ -5,7 +5,7 @@ var test = require("../modal/test");
 //import router
 var app = express.Router();
 
-//start get connection
+//start get connection(retrive data response from server)
 app.get("/", (req, res) => {
   test.find({}).exec(function(err, test) {
     if (err) {
@@ -17,7 +17,7 @@ app.get("/", (req, res) => {
 });
 //End get connection
 
-//Start Post operation
+//Start Post operation(send form data to the server)
 app.post("/", function(req, res) {
   var testing = new test();
   testing.Usn = req.body.Usn;
