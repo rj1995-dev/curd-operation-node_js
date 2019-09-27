@@ -66,5 +66,32 @@ app.delete("/:id", function(req, res) {
     });
 });
 //End Delete Opration
+
+//Update(put) operation
+app.put("/:id", function(req, res) {
+  test.findOneAndUpdate(
+    {
+      _id: req.params.id
+    },
+    {
+      $set: {
+        Usn: req.body.Usn,
+        Name: req.body.Name
+      }
+    },
+    {
+      $upsert: true
+    },
+    function(err, test) {
+      if (err) {
+        res.send("Error is occure");
+      } else {
+        res.json(test);
+      }
+    }
+  );
+});
+//End update opration
+
 //export the router
 module.exports = app;

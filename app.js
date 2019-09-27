@@ -11,7 +11,11 @@ var port = 8800;
 //call express function
 var app = express();
 //connect MongoDb
-mongoDB.connect(Db, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoDB.connect(Db, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false
+});
 //middleware connection
 //import router module
 var abc = require("./router/tests");
